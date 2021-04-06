@@ -34,3 +34,5 @@ $actualamount = $files.count
 if ($files.count -gt $keepamount) {
   $files | Sort-Object CreationTime | Select-Object -First ($files.count - $keepamount) | Remove-Item -force
 }
+
+# added keep amount var at line 34
