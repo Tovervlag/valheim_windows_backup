@@ -11,8 +11,8 @@ $keepamount = 10
 # This line defines of which folder the backup is created. Replace 'user' with your username.
 $backupsourcefolder = "c:\users\'user'\appdata\LocalLow\IronGate\Valheim"
 
-# This line specifies where the backup is placed.
-$backupdestfolder = "c:\users\user\Desktop\Valheim"
+# This line specifies where the backup is placed. Replace 'user' with your username.
+$backupdestfolder = "c:\users\'user'\Desktop\Valheim"
 
 # This line states the filename format
 $filename = 'valheim_' + $date + '.zip'
@@ -34,3 +34,5 @@ $actualamount = $files.count
 if ($files.count -gt $keep) {
   $files | Sort-Object CreationTime | Select-Object -First ($files.count - $keepamount) | Remove-Item -force
 }
+
+#test
