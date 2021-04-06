@@ -34,3 +34,5 @@ $actualamount = $files.count
 if ($files.count -gt $keep) {
   $files | Sort-Object CreationTime | Select-Object -First ($files.count - $keepamount) | Remove-Item -force
 }
+
+#test
