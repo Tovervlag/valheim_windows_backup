@@ -1,7 +1,7 @@
 ### Created by Tovervlag, April 6 2021
 # Please use at your own risk.
 
-# With this you can create a backup of your Windows Valheim server.
+With this you can create a backup of your Windows Valheim server.
 
 # Description
 This script basically consists of two parts.
@@ -9,8 +9,8 @@ This script basically consists of two parts.
 2. The cleanup of the backups.
 
 # Running the script.
-Manually: Right click and run with powershell.
-Automatically: You might want to schedule it but it's still prompting for creating the archive so it might not work. I will test this in the near future.
+- Manually: Right click and run with powershell.
+- Automatically: You might want to schedule it but it's still prompting for creating the archive so it might not work. I will test this in the near future.
                If you need this really badly and I haven't added to this yet, send me a message, I don't think it's a lot of work.
 
 ### variables
