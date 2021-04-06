@@ -31,8 +31,8 @@ $actualamount = $files.count
 
 # Deletes the oldest files and keeps the newest $keepamount.
 # Only executes if there are more files than $keepamount.
-if ($files.count -gt $keep) {
+if ($files.count -gt $keepamount) {
   $files | Sort-Object CreationTime | Select-Object -First ($files.count - $keepamount) | Remove-Item -force
 }
 
-#test
+# added keep amount var at line 34
