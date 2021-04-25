@@ -8,11 +8,13 @@ $date = Get-Date -Format yyyy-mm-dd_hh.mm
 # It will delete the oldest ones if the folder has more than 10 files.
 $keepamount = 10
 
+$user = $env:username
+
 # This line defines of which folder the backup is created. Replace 'user' with your username.
-$backupsourcefolder = "c:\users\'user'\appdata\LocalLow\IronGate\Valheim"
+$backupsourcefolder = "c:\users\$user\appdata\LocalLow\IronGate\Valheim"
 
 # This line specifies where the backup is placed. Replace 'user' with your username.
-$backupdestfolder = "c:\users\'user'\Desktop\Valheim"
+$backupdestfolder = "c:\users\$user\Desktop\Valheim"
 
 # This line states the filename format
 $filename = 'valheim_' + $date + '.zip'
@@ -27,12 +29,11 @@ Compress-Archive -path $backupsourcefolder -force -DestinationPath $fulldestpath
 $files = Get-ChildItem -Path $backupdestfolder
 
 # Counts the amount of files in the $backupdestfolder
-$actualamount = $files.count
+$actualamount = ($files | Where-Object Name -match '.zip').count
 
 # Deletes the oldest files and keeps the newest $keepamount.
 # Only executes if there are more files than $keepamount.
 if ($files.count -gt $keepamount) {
-  $files | Sort-Object CreationTime | Select-Object -First ($files.count - $keepamount) | Remove-Item -force
+  $files | Sort-Object CreationTime | Select-Object -First ($actualamount - $keepamount) | Remove-Item -force
+  Write-Output (($files | Sort-Object CreationTime | Select-Object -First ($actualamount - $keepamount)).name + ' removed...')
 }
-
-# added keep amount var at line 34
